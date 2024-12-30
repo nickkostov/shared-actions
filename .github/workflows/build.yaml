@@ -15,10 +15,6 @@ on:
         required: true
         type: string
         description: The name of the image that we are building
-#      env:
-#        required: true
-#        type: string
-#        description: Environment (e.g., dev, uat, main).
 
 # Define environment variables for use in the workflow
 env:
@@ -28,10 +24,6 @@ jobs:
   build_container_image:
     name: Build Container Image
     runs-on: ${{ inputs.runner }}
-    #permissions:
-    #  contents: write
-    #  packages: write
-    #  actions: read
 
     steps:
       # Print the container image tag
@@ -70,4 +62,3 @@ jobs:
           tags: ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.tag }}
           build-args: |
             LABEL=${{ github.server_url }}/${{ github.repository }}
-#            ENV=${{ inputs.env }}
