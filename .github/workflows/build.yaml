@@ -1,6 +1,5 @@
-name: Build Docker Container Image
+name: Build Container Reusable Workflow
 
-# Define the reusable workflow trigger
 on: 
   workflow_call:
     inputs:
