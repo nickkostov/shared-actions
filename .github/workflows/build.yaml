@@ -67,7 +67,7 @@ jobs:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: ${{ env.container_registry_url }}/${{ inputs.image_name }}/${{ inputs.tag }}
+          tags: ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.tag }}
           build-args: |
             LABEL=${{ github.server_url }}/${{ github.repository }}
 #            ENV=${{ inputs.env }}
