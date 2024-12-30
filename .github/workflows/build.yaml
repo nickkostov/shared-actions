@@ -54,16 +54,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-#      # Build and push the Docker image
-#      - name: Build and Push Docker Image
-#        uses: docker/build-push-action@v5
-#        with:
-#          context: .
-#          file: docker/Dockerfile
-#          push: true
-#          cache-from: type=gha
-#          cache-to: type=gha,mode=max
-#          tags: ${{ env.container_registry_url }}/${{ inputs.tag }}
-#          build-args: |
-#            LABEL=${{ github.server_url }}/${{ github.repository }}
+      # Build and push the Docker image
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          tags: ${{ env.container_registry_url }}/${{ inputs.tag }}
+          build-args: |
+            LABEL=${{ github.server_url }}/${{ github.repository }}
 #            ENV=${{ inputs.env }}
