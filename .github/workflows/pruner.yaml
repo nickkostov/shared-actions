@@ -9,15 +9,15 @@ on:
         description: "Default GitHub Runner"
       dry-run:
         required: true
-        type: bool
+        type: string
         default: true
       keep-last:
         required: true
-        type: number
+        type: string
         default: 100 # just in case 
       prune-untagged:
         required: true
-        type: bool
+        type: string
         default: false
 
 jobs:
