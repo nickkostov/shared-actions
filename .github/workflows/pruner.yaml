@@ -7,9 +7,6 @@ on:
         type: string
         default: "ubuntu-latest"
         description: "Default GitHub Runner"
-      prune-untagged:
-        required: false
-        type: bool
       dry-run:
         required: true
         type: bool
