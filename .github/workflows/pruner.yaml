@@ -1,0 +1,39 @@
+name: Prune Container Registry
+on:    
+  workflow_call:
+    inputs:
+      runner:
+        required: true
+        type: string
+        default: "ubuntu-latest"
+        description: "Default GitHub Runner"
+      prune-untagged:
+        required: false
+        type: bool
+      dry-run:
+        required: true
+        type: bool
+        default: true
+      keep-last:
+        required: true
+        type: number
+        default: 100 # just in case 
+      prune-untagged:
+        required: true
+        type: bool
+        default: false
+
+jobs:
+  prune_container_registry:
+    name: Prune Container Registry
+    runs-on: ${{ inputs.runner }}
+    steps:
+       - name: GCHR
+         uses: vlaurin/action-ghcr-prune@v0.6.0
+         with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+           organization: ${{ github.repository_owner }}
+           container: ${{ github.event.repository.name }}
+           dry-run: ${{ inputs.dry-run }}
+           keep-last: ${{ inputs.keep-last }}
+           prune-untagged: ${{ inputs.prune-untagged }}
