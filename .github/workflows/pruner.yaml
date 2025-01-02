@@ -41,7 +41,7 @@ jobs:
          uses: vlaurin/action-ghcr-prune@v0.6.0
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
-           organization: ${{ inputs.organization }}
+           #organization: ${{ inputs.organization }}
            user: ${{ inputs.user }}
            #${{ github.repository_owner }}
            container: ${{ inputs.image }}
