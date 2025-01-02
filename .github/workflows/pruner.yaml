@@ -23,6 +23,14 @@ on:
         required: true
         type: string
         default: input-image-name
+      organization:
+        required: false
+        type: string
+        default: mandatory-organization-name
+      user:
+        required: false
+        type: string
+        default: mandatory-user-name
 
 jobs:
   prune_container_registry:
@@ -33,9 +41,10 @@ jobs:
          uses: vlaurin/action-ghcr-prune@v0.6.0
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
-           organization: ${{ github.repository_owner }}
+           organization: ${{ inputs.organization }}
+           user: ${{ inputs.user }}
+           #${{ github.repository_owner }}
            container: ${{ inputs.image }}
-           #container: ${{ github.event.repository.name }}
            dry-run: ${{ inputs.dry-run }}
            keep-last: ${{ inputs.keep-last }}
            prune-untagged: ${{ inputs.prune-untagged }}
