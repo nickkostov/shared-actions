@@ -15,6 +15,12 @@ on:
         required: true
         type: string
         description: The name of the image that we are building
+      context:
+        required: true
+        type: string
+      dockerfile-path:
+        required: true
+        type: string
 
 # Define environment variables for use in the workflow
 env:
@@ -54,10 +60,8 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: |
-            docker/Dockerfile
-            docker/entrypoint.sh
+          context: ${{ inputs.context }}
+          file: ${{ inputs.dockerfile-path }}
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
