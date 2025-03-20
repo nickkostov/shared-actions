@@ -3,6 +3,10 @@ name: Build Container Reusable Workflow
 on: 
   workflow_call:
     inputs:
+      custom:
+        required: true
+        type: string
+        description: The container image tag to use.
       tag:
         required: true
         type: string
@@ -68,5 +72,6 @@ jobs:
           tags: |
            ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.tag }}
            ${{ env.container_registry_url }}/${{ inputs.image_name }}:latest
+           ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.custom }} 
           build-args: |
             LABEL=${{ github.server_url }}/${{ github.repository }}
