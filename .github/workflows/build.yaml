@@ -72,6 +72,6 @@ jobs:
           tags: |
            ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.tag }}
            ${{ env.container_registry_url }}/${{ inputs.image_name }}:latest
-           ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.custom }} 
+           ${{ env.container_registry_url }}/${{ inputs.image_name }}:${{ inputs.tag }}.${{ inputs.custom }} 
           build-args: |
             LABEL=${{ github.server_url }}/${{ github.repository }}
